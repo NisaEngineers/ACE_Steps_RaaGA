@@ -24,7 +24,7 @@ from models.ace_step_transformer import ACEStepTransformer2DModel
 from models.lyrics_utils.lyric_tokenizer import VoiceBpeTokenizer
 from apg_guidance import apg_forward, MomentumBuffer, cfg_forward, cfg_zero_star, cfg_double_condition_forward
 import torchaudio
-import torio
+
 
 
 torch.backends.cudnn.benchmark = False
@@ -942,7 +942,7 @@ class ACEStepPipeline:
 
         output_path_flac = f"{base_path}/output_{time.strftime('%Y%m%d%H%M%S')}_{idx}.{format}"
         target_wav = target_wav.float()
-        torchaudio.save(output_path_flac, target_wav, sample_rate=sample_rate, format=format, compression=torio.io.CodecConfig(bit_rate=320000))
+        torchaudio.save(output_path_flac, target_wav, sample_rate=sample_rate, format="FLAC")
         return output_path_flac
 
     def infer_latents(self, input_audio_path):
