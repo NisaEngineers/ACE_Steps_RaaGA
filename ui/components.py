@@ -163,7 +163,7 @@ def create_text2music_ui(
         fn=text2music_process_func,
         inputs=[
             audio_duration, prompt, lyrics, infer_step, guidance_scale,
-            scheduler_type, cfg_underwood, omega_scale, manual_seeds,
+            scheduler_type, cfg_type, omega_scale, manual_seeds,
             guidance_interval, guidance_interval_decay, min_guidance_scale,
             use_erg_tag, use_erg_lyric, use_erg_diffusion, oss_steps,
             guidance_scale_text, guidance_scale_lyric
@@ -180,7 +180,7 @@ def create_main_demo_ui(
         # Kadalu RAAGA Music Composer
         ### Create beautiful Hindi songs instantly • Powered by Kadalu AI
         
-        <p align'c"center">
+        <p align="center">
           <a href="https://kadalu.ai">kadalu.ai</a> • 
           <a href="https://kadalu.ai/raaga">RAAGA Composer</a>
         </p>
