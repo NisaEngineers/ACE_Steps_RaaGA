@@ -2,28 +2,29 @@ import gradio as gr
 import librosa
 
 # Only Hindi/Indian vibe in lyrics & UI text – tags remain generic (ACE-Step model understands English tags best)
-TAG_DEFAULT = "bollywood, hindi cinematic, emotional, romantic, 90s style, strings, flute, tabla, sitar, soft drums, lush orchestration, heartfelt, anthemic chorus, male vocalist, 92 BPM"
+TAG_DEFAULT = "emotional, romantic, 90s style, strings, flute, soft drums, lush orchestration, heartfelt, anthemic chorus, male vocalist, 92 BPM"
 
 LYRIC_DEFAULT = """[intro]
-Dhadkanen... sun rahi hain...
+The heartbeats… they are listening…
 [verse]
-Tere bin ye pal adhure se lagte hain
-Raaton mein bas tere khwab jagte hain
+Without you these moments feel incomplete
+In the nights, only your dreams awaken
 [verse]
-Dooriyon ne sikhaya hai jeena
-Phir bhi dil tujhko hi chahe har dina
+Distance has taught me how to live
+Yet my heart still longs for you every day
 [chorus]
-O sanam... tere bina jee na sakein hum
-Tere sang hi saansein chalein ab toh
-Dil ne yeh iraada kar liya hai
-Tujhse hi toh poora har khwab hai
+O beloved… without you I cannot survive
+With you alone my breaths continue now
+My heart has made this decision
+Every dream is fulfilled only with you
 [bridge]
-Hawaon mein teri khushboo hai
-Aankhon mein bas tera nasha hai
+Your fragrance lingers in the air
+In my eyes, only your intoxication remains
 [instrumental]
 [chorus]
-O sanam... tere bina jee na sakein hum
-Tere sang hi saansein chalein ab toh"""
+O beloved… without you I cannot survive
+With you alone my breaths continue now
+"""
 
 def create_output_ui(task_name="RAAGA Composer"):
     output_audio1 = gr.Audio(type="filepath", label=f"{task_name} Generated Audio")
@@ -48,14 +49,14 @@ def create_text2music_ui(
                 sample_bnt = gr.Button("Sample Song", variant="primary", scale=1)
             prompt = gr.Textbox(lines=3, label="Style & Tags (comma-separated)", max_lines=5, value=TAG_DEFAULT,
                                info="Describe mood, era, instruments, tempo. Example: 90s bollywood, romantic, flute solo, soft rock, etc.")
-            lyrics = gr.Textbox(lines=12, label="Lyrics (Hindi / Mixed)", max_lines=20, value=LYRIC_DEFAULT,
+            lyrics = gr.Textbox(lines=12, label="Lyrics (English / Mixed)", max_lines=20, value=LYRIC_DEFAULT,
                                info="Use [verse], [chorus], [bridge], [intro], [instrumental] for structure.")
             
             with gr.Accordion("Basic Settings", open=False):
                 infer_step = gr.Slider(1, 60, step=1, value=30, label="Infer Steps")
                 guidance_scale = gr.Slider(0.0, 200.0, step=0.1, value=18.0, label="Guidance Scale")
                 guidance_scale_text = gr.Slider(0.0, 10.0, step=0.1, value=3.0, label="Guidance Scale Text")
-                guidance_scale_lyric = gr.Slider(0.0, 10.0, step=0.1, value=6.0, label="Lyric Guidance (stronger for Hindi)")
+                guidance_scale_lyric = gr.Slider(0.0, 10.0, step=0.1, value=6.0, label="Lyric Guidance (stronger for other language than English)")
                 manual_seeds = gr.Textbox(label="Manual Seeds (optional)", placeholder="42, 786", value=None)
 
             with gr.Accordion("Advanced Settings", open=False):
