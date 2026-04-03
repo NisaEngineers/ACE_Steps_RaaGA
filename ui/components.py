@@ -179,7 +179,7 @@ def create_main_demo_ui(
     with gr.Blocks(title="Kadalu RAAGA Music Composer") as demo:
         gr.Markdown("""
         # Kadalu RAAGA Music Composer
-        ### Create beautiful Hindi songs instantly • Powered by Kadalu AI
+        ### Create beautiful songs instantly • Powered by Kadalu AI
         
         <p align="center">
           <a href="https://kadalu.ai">kadalu.ai</a> • 
